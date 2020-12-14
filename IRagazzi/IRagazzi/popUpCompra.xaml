@@ -1,0 +1,198 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="IRagazzi.popUpCompra"
+              xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"
+             xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup" xmlns:conv="clr-namespace:ContextMenuSample.Converters">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <conv:MenuFitWidthConverter x:Key="MenuFitWidthConverter" />
+            <OnPlatform x:TypeArguments="x:String" x:Key="BoldFont">
+                <On Platform="Android" Value="Barrets.otf#Open Sans" />
+            </OnPlatform>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <!--  You can use any elements here which are extended from Xamarin.Forms.View  -->
+    <FlexLayout Direction="Column"
+                AlignItems="Stretch"
+                JustifyContent="Start">
+        <ScrollView>
+        <Grid >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="55" />
+                <RowDefinition Height="55" />
+                <RowDefinition Height="55" />
+                <RowDefinition Height="75" />
+                
+                <RowDefinition Height="55" />
+                <RowDefinition Height="95" />
+                <RowDefinition Height="35" />
+                <RowDefinition Height="55" />
+                <RowDefinition Height="95" />
+                <RowDefinition Height="10" />
+                <RowDefinition Height="35" />
+                <RowDefinition Height="75" />
+                 <RowDefinition Height="30" />
+                 <RowDefinition Height="30" />
+                <RowDefinition Height="30" />
+
+                </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+
+            </Grid.ColumnDefinitions>
+
+            <Label Margin="10" HorizontalOptions="Start"  FontFamily="{StaticResource BoldFont}" Grid.Row="0" Grid.Column="0"   x:Name="lblPrecio3" FontSize="Title" Text="SubTotal" TextColor="Black"  />
+
+                <Label Margin="7"  HorizontalOptions="End"  Grid.Row="0" Grid.Column="0" x:Name="lblPrecio8" FontSize="Title" Text="$100" TextColor="Black"  />
+
+
+
+
+
+
+
+                <Label Margin="10" Grid.Row="1" Grid.Column="0"  FontFamily="{StaticResource BoldFont}"  FontSize="Title" HorizontalOptions="Start" Text="Envio " TextColor="Black"  />
+
+
+                <Label Margin="7" Grid.Row="1" Grid.Column="0" HorizontalOptions="End"   FontSize="Title" Text="Gratis" TextColor="Black"  />
+
+
+
+
+                <Label Margin="10" Grid.Row="2" Grid.Column="0"  FontFamily="{StaticResource BoldFont}" FontSize="Title" HorizontalOptions="Start" Text="Total" TextColor="Black" VerticalOptions="Center" />
+
+                <Label Margin="7" Grid.Row="2" Grid.Column="0" x:Name="lblPrecio" HorizontalOptions="End" FontSize="Title" Text="Total" TextColor="Black" VerticalOptions="Center" />
+
+
+            <StackLayout  Orientation="Horizontal"  Grid.Row="3" Grid.Column="0"  HeightRequest="50" Margin="10">
+                <Label Text="Codigo"  FontFamily="{StaticResource BoldFont}" FontSize="Title" TextColor="Black" VerticalOptions="Center"/>
+
+
+            <Entry  FontSize="17"
+                            TextColor="Black"
+                            HorizontalOptions="FillAndExpand"
+                           
+                           
+                            x:Name="txtCodigo"
+                            Placeholder="Codigo"
+                           
+                            VerticalTextAlignment="Center"
+                                                           />
+
+            <Button BackgroundColor="DodgerBlue"
+                FontSize="10"
+                    CornerRadius="10"
+                Text="Agregar"
+                    FontFamily="{StaticResource BoldFont}" 
+                TextColor="White" 
+                HorizontalOptions="Center"
+                Clicked="Button_Clicked"/>
+        </StackLayout>
+
+
+                <Label Margin="10"  HorizontalOptions="Start" Grid.Row="4" Grid.Column="0" FontFamily="{StaticResource BoldFont}"  Text="Total Descuento" FontSize="Title" TextColor="Black" VerticalOptions="Center" />
+
+                <Label Margin="7" x:Name="lblSuma" HorizontalOptions="End" Grid.Row="4" Grid.Column="0" Text="0" FontSize="Title" TextColor="Black" VerticalOptions="Center" />
+
+
+          <StackLayout Orientation="Vertical"  Grid.Row="5" Grid.Column="0"  HeightRequest="50" Margin="10">
+                <Label Text="Direccion"  FontFamily="{StaticResource BoldFont}" FontSize="Title" TextColor="Black" VerticalOptions="Center"/>
+
+
+            <Entry  FontSize="17"
+                            TextColor="Black"
+                            HorizontalOptions="FillAndExpand"
+                           
+                           
+                            x:Name="txtDireccion"
+                            Placeholder="Direccion"
+                           
+                            VerticalTextAlignment="Center"
+                                                           />
+
+        </StackLayout>
+
+                <StackLayout  Grid.Row="6" Grid.Column="0" Margin="10">
+                    <Label   Text="Localidad"  FontFamily="{StaticResource BoldFont}" FontSize="Title" TextColor="Gray" VerticalOptions="Center"/>
+                </StackLayout>
+                <StackLayout  Grid.Row="7" Grid.Column="0" Margin="10">
+                    <Label   Text="Cordoba"  FontFamily="{StaticResource BoldFont}" FontSize="Title" TextColor="Gray" VerticalOptions="Center"/>
+                </StackLayout>
+            
+                <StackLayout Orientation="Vertical"  Grid.Row="8" Grid.Column="0"  HeightRequest="50" Margin="10">
+                    <Label Text="Telefono"  FontFamily="{StaticResource BoldFont}" FontSize="Title" TextColor="Black" VerticalOptions="Center"/>
+
+
+                    <Entry  FontSize="17"
+                            TextColor="Black"
+                            HorizontalOptions="FillAndExpand"
+                           
+                           
+                            x:Name="txtTelefono"
+                            Placeholder="Telefono"
+                           Keyboard="Numeric"
+                            VerticalTextAlignment="Center"
+                                                           />
+
+                </StackLayout>
+
+                <StackLayout  Grid.Row="9" Grid.Column="0" x:Name="divDescuento" Margin="10" IsVisible="False" Orientation="Horizontal"  HeightRequest="35" HorizontalOptions="Start">
+                <Label Text="Total Con Descuento"  FontFamily="{StaticResource BoldFont}" FontSize="Title" TextColor="Black" VerticalOptions="Center"/>
+
+
+            
+        </StackLayout>
+
+                <StackLayout  Grid.Row="10" Grid.Column="0" Margin="10">
+                <Label   Text="Foma De Pago"  FontFamily="{StaticResource BoldFont}" FontSize="Title" TextColor="Black" VerticalOptions="Center"/>
+        </StackLayout>
+
+                <StackLayout  Grid.Row="11" Grid.Column="0" Margin="10">
+                <StackLayout Orientation="Horizontal">
+                    <Label VerticalOptions="Center" FontSize="Title" TextColor="Black"  FontFamily="{StaticResource BoldFont}" HorizontalOptions="Center" Text="Efectivo"></Label>
+                        <CheckBox x:Name="chkEfectivo"  
+                                CheckedChanged="chkEfectivo_BindingContextChanged"  VerticalOptions="Center" HorizontalOptions="Center"></CheckBox>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                        <Label VerticalOptions="Center" FontSize="Title" TextColor="Black"  FontFamily="{StaticResource BoldFont}" HorizontalOptions="Center" Text="Tarjeta"></Label>
+                        <CheckBox x:Name="chktarjeta"  CheckedChanged="chkEfectivo_BindingContextChanged"   VerticalOptions="Center" HorizontalOptions="Center"></CheckBox>
+                </StackLayout>
+            </StackLayout>
+
+                <StackLayout   Grid.Row="12" Grid.Column="0" Margin="10">
+                <Label   Text="Tipo de Entrega"  FontFamily="{StaticResource BoldFont}" FontSize="Title" TextColor="Gray" VerticalOptions="Center"/>
+            </StackLayout>
+            <StackLayout  Grid.Row="13" Grid.Column="0" Margin="10">
+                    <Label   Text="Delivery"  FontFamily="{StaticResource BoldFont}" FontSize="Title" TextColor="Gray" VerticalOptions="Center"/>
+            </StackLayout>
+            <StackLayout  Grid.Row="14" Grid.Column="0" Margin="10">
+                    <Label   Text="Horario"  FontFamily="{StaticResource BoldFont}" FontSize="Title" TextColor="Gray" VerticalOptions="Center"/>
+            </StackLayout>
+            <StackLayout  Grid.Row="15" Grid.Column="0" Margin="10">
+                    <Label   Text="En las Proxiam 24 horas"  FontFamily="{StaticResource BoldFont}" FontSize="Title" TextColor="Gray" VerticalOptions="Center"/>
+            </StackLayout>
+
+
+
+
+                <StackLayout Grid.Row="16" Grid.Column="0">
+            <Button   BackgroundColor="DodgerBlue"
+                FontSize="30"
+                Text="Confirmar"
+                TextColor="White"    
+                 FontFamily="{StaticResource BoldFont}" 
+                HorizontalOptions="FillAndExpand"
+                     VerticalOptions="FillAndExpand"
+                Clicked="Button_Clicked_1"/>
+        </StackLayout>
+            </Grid>
+        </ScrollView>
+    </FlexLayout>
+    
+</ContentPage>

@@ -1,0 +1,141 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="IRagazzi.Registro">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+           
+            <OnPlatform x:TypeArguments="x:String" x:Key="BoldFont">
+                <On Platform="Android" Value="Barrets.otf#Open Sans" />
+            </OnPlatform>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ScrollView>
+        <StackLayout>
+            <Label Text="MIS DATOS" TextColor="#4CAF50" FontFamily="{StaticResource BoldFont}" FontSize="Title" HorizontalOptions="Center"></Label>
+            <StackLayout Orientation="Horizontal">
+                <Entry  FontSize="17"
+                            TextColor="Black"
+                        FontFamily="{StaticResource BoldFont}"
+                            HorizontalOptions="FillAndExpand"
+                            Grid.Row="0"
+                            Margin="10"
+                            x:Name="txtNombre"
+                            Placeholder="Nombre"
+                            Grid.Column="0"
+                            VerticalTextAlignment="Center"
+                                                           />
+                <Entry  FontSize="17"
+                            TextColor="Black"
+                        FontFamily="{StaticResource BoldFont}"
+                            HorizontalOptions="FillAndExpand"
+                            Grid.Row="0"
+                            Margin="10"
+                            x:Name="txtApellido"
+                            Placeholder="Apellido"
+                            Grid.Column="0"
+                            VerticalTextAlignment="Center"
+                                                           />
+            </StackLayout>
+            <Entry  FontSize="17"
+                            TextColor="Black"
+                        FontFamily="{StaticResource BoldFont}"
+                            HorizontalOptions="FillAndExpand"
+                            Grid.Row="0"
+                            Margin="10"
+                            x:Name="txtEmail"
+                            Placeholder="Email"
+                            Grid.Column="0"
+                            VerticalTextAlignment="Center"
+                                                           />
+            <Entry  FontSize="17"
+                            TextColor="Black"
+                        FontFamily="{StaticResource BoldFont}"
+                            HorizontalOptions="FillAndExpand"
+                            Grid.Row="0"
+                            Margin="10"
+                            x:Name="txtContrasenia"
+                            Placeholder="Contraseñia"
+                            Grid.Column="0"
+                            VerticalTextAlignment="Center"
+                                                           />
+            <Entry  FontSize="17"
+                            TextColor="Black"
+                        FontFamily="{StaticResource BoldFont}"
+                            HorizontalOptions="FillAndExpand"
+                            Grid.Row="0"
+                            Margin="10"
+                            x:Name="txtContraseniaRepetir"
+                            Placeholder="Confirmar Contraseñia"
+                            Grid.Column="0"
+                            VerticalTextAlignment="Center"
+                                                           />
+            <Entry  FontSize="17"
+                            TextColor="Black"
+                            FontFamily="{StaticResource BoldFont}"
+                            HorizontalOptions="FillAndExpand"
+                            Grid.Row="0"
+                            Margin="10"
+                            x:Name="txttelefono"
+                            Placeholder="Numero Celular"
+                            Keyboard="Numeric"
+                            Grid.Column="0"
+                            VerticalTextAlignment="Center"
+                                                           />
+            <Label Text="UBICACION DE ENTREGA" TextColor="#4CAF50" FontFamily="{StaticResource BoldFont}" FontSize="Title" HorizontalOptions="Center"></Label>
+
+            <StackLayout Orientation="Horizontal">
+
+                <Entry  FontSize="17"
+                            TextColor="Black"
+                        FontFamily="{StaticResource BoldFont}"
+                            HorizontalOptions="FillAndExpand"
+                            Grid.Row="0"
+                            Margin="10"
+                            x:Name="txtCalle"
+                            Placeholder="Calle"
+                            Grid.Column="0"
+                            VerticalTextAlignment="Center"
+                                                           />
+                <Entry  FontSize="17"
+                            TextColor="Black"
+                        FontFamily="{StaticResource BoldFont}"
+                            HorizontalOptions="FillAndExpand"
+                            Grid.Row="0"
+                            Margin="10"
+                            x:Name="txtAltura"
+                            Placeholder="Altura"
+                            Grid.Column="0"
+                            VerticalTextAlignment="Center"
+                                                           />
+                
+
+
+            </StackLayout>
+
+            <Entry  FontSize="17"
+                   
+                            TextColor="Black"
+                        FontFamily="{StaticResource BoldFont}"
+                            HorizontalOptions="FillAndExpand"
+                            Grid.Row="0"
+                            Margin="10"
+                            x:Name="txtPiso"
+                            Placeholder="Departamento(Piso,Dpto)"
+                            Grid.Column="0"
+                            VerticalTextAlignment="Center"
+                                                           />
+
+            <Label Margin="10" FontSize="Subtitle" FontFamily="{StaticResource BoldFont}" Text="CIUDAD CORDOBA"></Label>
+
+            <Button x:Name="btnregistrar" Margin="50,20,50,0" Clicked="Button_Clicked" FontSize="Title" BackgroundColor="Blue"  FontFamily="{StaticResource BoldFont}" Text="Registrar" ></Button>
+            <ActivityIndicator HeightRequest="25" WidthRequest="25" Grid.Row="2" Grid.Column="0"
+                     x:Name="aicargando"></ActivityIndicator>
+        </StackLayout>
+        
+        
+    </ScrollView>
+</ContentPage>

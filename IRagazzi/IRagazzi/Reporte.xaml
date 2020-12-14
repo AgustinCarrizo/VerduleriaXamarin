@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:dg="clr-namespace:Xamarin.Forms.DataGrid;assembly=Xamarin.Forms.DataGrid" 
+             xmlns:sys="clr-namespace:System;assembly=netstandard"
+             mc:Ignorable="d"
+             x:Class="IRagazzi.Reporte">
+    <ContentPage.Content>
+
+        <StackLayout>
+            <Label Text="Fecha desde "></Label>
+            <DatePicker VerticalOptions="End" x:Name="fechadesde" Date="{x:Static sys:DateTime.Now}">
+                <DatePicker.Format>yyyy-MM-dd</DatePicker.Format>
+                <DatePicker.MinimumDate>
+                    <sys:DateTime x:FactoryMethod="Parse">
+                        <x:Arguments>
+                            <x:String>Jan 1 2000</x:String>
+                        </x:Arguments>
+                    </sys:DateTime>
+                </DatePicker.MinimumDate>
+                <DatePicker.MaximumDate>
+                    <sys:DateTime x:FactoryMethod="Parse">
+                        <x:Arguments>
+                            <x:String>Dec 31 2050</x:String>
+                        </x:Arguments>
+                    </sys:DateTime>
+                </DatePicker.MaximumDate>
+               
+            </DatePicker>
+            <Label Text="Fecha Hasta"></Label>
+            <DatePicker VerticalOptions="End" x:Name="fechahasta" Date="{x:Static sys:DateTime.Now}">
+                <DatePicker.Format>yyyy-MM-dd</DatePicker.Format>
+                <DatePicker.MinimumDate>
+                    <sys:DateTime x:FactoryMethod="Parse">
+                        <x:Arguments>
+                            <x:String>Jan 1 2000</x:String>
+                        </x:Arguments>
+                    </sys:DateTime>
+                </DatePicker.MinimumDate>
+                <DatePicker.MaximumDate>
+                    <sys:DateTime x:FactoryMethod="Parse">
+                        <x:Arguments>
+                            <x:String>Dec 31 2050</x:String>
+                        </x:Arguments>
+                    </sys:DateTime>
+                </DatePicker.MaximumDate>
+            </DatePicker>
+
+            <Button Text="Buscar" Clicked="Button_Clicked"></Button>
+
+            <dg:DataGrid x:Name="lstinfluencer" ItemsSource="{Binding ReporteInfluencer}"  SelectionEnabled="True"  RowHeight="70" HeaderHeight="50"
+                    BorderColor="White" HeaderBackground="MediumAquamarine"  ActiveRowColor="Red">
+                <x:Arguments>
+                    <ListViewCachingStrategy>RetainElement</ListViewCachingStrategy>
+                </x:Arguments>
+                <dg:DataGrid.HeaderFontSize>
+                    <OnIdiom x:TypeArguments="x:Double">
+                        <OnIdiom.Tablet>15</OnIdiom.Tablet>
+                        <OnIdiom.Phone>12</OnIdiom.Phone>
+                    </OnIdiom>
+                </dg:DataGrid.HeaderFontSize>
+                <dg:DataGrid.Columns>
+                    <dg:DataGridColumn Title="Codigo" PropertyName="Codigo" Width="0.7*"></dg:DataGridColumn>
+                    <dg:DataGridColumn Title="Nombre" PropertyName="Nombre" Width="1*"></dg:DataGridColumn>
+                    <dg:DataGridColumn Title="PrecioTotal" PropertyName="PrecioTotal" Width="1*"></dg:DataGridColumn>
+                    <dg:DataGridColumn Title="FechaDesde" PropertyName="FechaDesdes"   Width="1*">
+                    </dg:DataGridColumn>
+                    <dg:DataGridColumn Title="FechaHasta" PropertyName="FechaHastas"  Width="1*"></dg:DataGridColumn>
+                </dg:DataGrid.Columns>
+                <dg:DataGrid.RowsBackgroundColorPalette>
+                    <dg:PaletteCollection>
+
+                    </dg:PaletteCollection>
+                </dg:DataGrid.RowsBackgroundColorPalette>
+            </dg:DataGrid>
+
+
+
+
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

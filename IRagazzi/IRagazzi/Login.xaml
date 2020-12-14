@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<forms:ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:custom1="clr-namespace:IRagazzi" xmlns:forms="http://xamarin.com/schemas/2014/forms"
+             mc:Ignorable="d"
+             x:Class="IRagazzi.Login">
+
+    <ScrollView>
+    <Grid >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            <RowDefinition Height="55" />
+            <RowDefinition Height="35" />
+           
+        </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                
+            </Grid.ColumnDefinitions>
+
+                <Image Grid.Row="0" Grid.Column="0"  Source="logo.jpeg" HorizontalOptions="Center" />
+
+        <Grid Grid.Row="1" Grid.Column="0"  >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                     <RowDefinition Height="auto" />
+                
+
+            </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                  
+                  
+                </Grid.ColumnDefinitions>
+
+            <Entry  FontSize="17"
+                    TextColor="Black"
+                    HorizontalOptions="FillAndExpand"
+                    Grid.Row="0"
+                    Margin="10"
+                    x:Name="txtUsuario"
+                    Placeholder="Usuario"
+                    Grid.Column="0"
+                    VerticalTextAlignment="Center"
+                                                   />
+               
+            <Entry 
+                   FontSize="17"
+                   TextColor="Green"
+                   Margin="10"
+                x:Name="txtContrasenia"
+                IsPassword="True"
+                   Placeholder="Contraseña"
+                   HorizontalOptions="FillAndExpand"
+                   Grid.Row="1" Grid.Column="0"
+                   VerticalTextAlignment="Center" />
+               
+
+           
+
+               <Button Grid.Row="2" Grid.Column="0"
+                       CornerRadius="10"
+                       BackgroundColor="Blue"
+                       TextColor="Black"
+                       Margin="10"
+                       FontSize="Title"
+                       x:Name="btnlogin"
+                       Clicked="btnLogin"
+                       HorizontalOptions="Fill"
+                       Text="Ingresar" />
+                <ActivityIndicator HeightRequest="25" WidthRequest="25" Grid.Row="2" Grid.Column="0"
+                     x:Name="aicargando"></ActivityIndicator>
+
+                <Button Grid.Row="3" Clicked="Button_Clicked" BackgroundColor="Transparent" Grid.Column="0" TextColor="#4CAF50" Text="No tenes Cuenta?? Registrate "></Button>
+
+            </Grid>
+        
+       
+            
+        </Grid>
+    </ScrollView>
+</forms:ContentPage>

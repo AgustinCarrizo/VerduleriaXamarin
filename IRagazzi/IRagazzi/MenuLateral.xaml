@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:conv="clr-namespace:ContextMenuSample.Converters"
+             mc:Ignorable="d"
+             x:Class="IRagazzi.MenuLateral"
+             Title="Perfil">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <conv:MenuFitWidthConverter x:Key="MenuFitWidthConverter" />
+            <OnPlatform x:TypeArguments="x:String" x:Key="BoldFont">
+                <On Platform="Android" Value="Barrets.otf#Open Sans" />
+            </OnPlatform>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <StackLayout Margin="10">
+        <Image Source="logo.jpeg" WidthRequest="100"  ></Image>
+        <Label FontFamily="{StaticResource BoldFont}" HorizontalOptions="Center" FontSize="Title" x:Name="lblNombre" Text="Agustin Carrizo"></Label>
+
+        <StackLayout Orientation="Horizontal">
+            <ImageButton BackgroundColor="Transparent" Clicked="Button_Clicked" Source="ic_CarritoCompras.png" VerticalOptions="Start" ></ImageButton>
+            <Button  FontFamily="{StaticResource BoldFont}" Clicked="Button_Clicked" BackgroundColor="Transparent" HorizontalOptions="Center" VerticalOptions="Center"  Text="Mi Compra" FontSize="Title" ></Button>
+        </StackLayout>
+
+        <StackLayout Orientation="Horizontal">
+            <ImageButton BackgroundColor="Transparent" Clicked="ImageButton_Clicked" Source="ic_listaEspera.png" VerticalOptions="Start" ></ImageButton>
+            <Button FontFamily="{StaticResource BoldFont}" Clicked="ImageButton_Clicked" BackgroundColor="Transparent" HorizontalOptions="Center" VerticalOptions="Center"  Text="Pendientes" FontSize="Title"></Button>
+        </StackLayout>
+
+        <StackLayout Orientation="Horizontal">
+            <ImageButton BackgroundColor="Transparent" Clicked="Button_Clicked_1" Source="ic_listaOk.png" VerticalOptions="Start" ></ImageButton>
+            <Button FontFamily="{StaticResource BoldFont}" Clicked="Button_Clicked_1" BackgroundColor="Transparent" HorizontalOptions="Center" VerticalOptions="Center"  Text="Entregado" FontSize="Title" ></Button>
+        </StackLayout>
+        <StackLayout Orientation="Horizontal" >
+            <ImageButton BackgroundColor="Transparent" Source="ic_CerrarSesion.png" VerticalOptions="Start" ></ImageButton>
+            <Button FontFamily="{StaticResource BoldFont}" BackgroundColor="Transparent" HorizontalOptions="Center" VerticalOptions="Center"  Text="Cerrar Sesion" FontSize="Title"></Button>
+        </StackLayout>
+
+    </StackLayout>
+</ContentPage>

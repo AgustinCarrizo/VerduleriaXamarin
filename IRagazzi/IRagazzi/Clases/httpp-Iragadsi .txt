@@ -1,0 +1,148 @@
+https://todoreparacion.com/IRagazzi/insert_Registros.php
+
+https://todoreparacion.com/IRagazzi/insert_Compra.php
+
+http://todoreparacion.com/IRagazzi/Productos.php
+
+https://todoreparacion.com/IRagazzi/Get_Productos.php
+
+https://todoreparacion.com/IRagazzi/Get_ProductosBaja.php
+
+
+server=sql220.main-hosting.eu;user id=u711858828_IRagazzi;password=IRagazzi;database=u711858828_IRagazzi
+
+http://192.168.0.15/verduapi/Compras
+http://192.168.0.15/verduapi/influencers
+http://192.168.0.15/verduapi/Logins
+http://192.168.0.15/verduapi/Registros
+http://192.168.0.15/verdu/api/Productos
+
+
+
+public ActionResult Listado()
+        {
+            HttpClient client = new HttpClient();
+            client.BaseAddress = new Uri("https://localhost:44331/");
+
+            var request = client.GetAsync("api/Clientes").Result;
+
+            if (request.IsSuccessStatusCode)
+            {
+                var reultString = request.Content.ReadAsStringAsync().Result;
+                //var listado = JsonConvert.DeserializeObject<bool>(reultString);
+
+                var listado = JsonConvert.DeserializeObject<List<Cliente>>(reultString);
+
+                if (listado.Count >0)
+                {
+                    Session["ClienteList"] = listado;
+                    return View(listado);
+                }
+
+
+            }
+            List<Cliente> sinDatos = new List<Cliente>();
+            return View(sinDatos);
+
+        }
+
+        public ActionResult Editar(int id)
+        {
+            List<Cliente> Lisprofesores = Session["ClienteList"] as List<Cliente>;
+
+            var profesor = Lisprofesores.Where(d => d.id_Cliente == id).FirstOrDefault();
+
+            if (profesor != null)
+            {
+                return View(profesor);
+            }
+
+            return View("Listado");
+        }
+
+
+        [HttpPost]
+        public ActionResult Editar(Cliente cliente)
+        {
+            if (cliente.Apellido != null && cliente.Nombre != null && cliente.Email != null && cliente.Cel != null)
+            {
+                HttpClient client = new HttpClient();
+                client.BaseAddress = new Uri("https://localhost:44331/");
+
+                Tuple<int, Cliente> tuple = new Tuple<int, Cliente>(cliente.id_Cliente, cliente);
+
+
+
+                var request = client.PutAsJsonAsync("api/Clientes/" + cliente.id_Cliente,cliente).Result;
+
+                if (request.IsSuccessStatusCode)
+                {
+
+                    return RedirectToAction("Listado", "Cliente");
+
+                }
+
+            }
+            return View(cliente);
+        }
+
+
+
+        public ActionResult Nuevo()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Nuevo(Cliente cliente)
+        {
+            if (cliente.Apellido != null && cliente.Nombre != null && cliente.Email != null && cliente.Cel != null)
+            {
+                HttpClient client = new HttpClient();
+                client.BaseAddress = new Uri("https://localhost:44331/");
+
+
+
+                var request = client.PostAsync("api/Clientes", cliente, new JsonMediaTypeFormatter()).Result;
+
+                if (request.IsSuccessStatusCode)
+                {
+                    var reultString = request.Content.ReadAsStringAsync().Result;
+                    var listado = JsonConvert.DeserializeObject<Profesor>(reultString);
+
+                    //var listado = JsonConvert.DeserializeObject<List<Login>>(reultString);
+
+                    if (listado != null)
+                    {
+                        return RedirectToAction("Listado", "Cliente");
+                    }
+                }
+
+            }
+            return View();
+        }
+
+
+        public ActionResult Eliminar(int id)
+        {
+
+            HttpClient client = new HttpClient();
+            client.BaseAddress = new Uri("https://localhost:44331/");
+
+
+
+            var request = client.DeleteAsync("api/Clientes/id?=" + id).Result;
+
+            if (request.IsSuccessStatusCode)
+            {
+
+                return RedirectToAction("Listado", "Cliente");
+
+            }
+
+
+            return View();
+        }
+
+
+

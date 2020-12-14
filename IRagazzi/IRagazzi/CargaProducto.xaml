@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:custom1="clr-namespace:IRagazzi" xmlns:forms="http://xamarin.com/schemas/2014/forms"
+             mc:Ignorable="d"
+             x:Class="IRagazzi.CargaProducto">
+    <Grid x:Name="Todo" >
+        
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="75" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                
+            </Grid.ColumnDefinitions>
+                
+             <ImageButton x:Name="MostrarImagen" Clicked="btnCargarImagen" Margin="10" Grid.Row="0" Grid.Column="0"  Source="subirfoto.png" HorizontalOptions="Center" />
+          <ScrollView Grid.Row="1" Grid.Column="0">
+
+                <Grid >
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                             <RowDefinition Height="auto" />
+                            <RowDefinition Height="*" />
+                   
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+            
+                    <Entry  FontSize="17"
+                            TextColor="Black"
+                            HorizontalOptions="FillAndExpand"
+                            Grid.Row="0"
+                            Margin="10"
+                            x:Name="txtNombre"
+                            Placeholder="NOMBRE"
+                            Grid.Column="0"
+                            VerticalTextAlignment="Center"
+                                                           />
+               
+                    <Entry 
+                           FontSize="17"
+                           TextColor="Green"
+                           Margin="10"
+                           Keyboard="Numeric"
+                           Placeholder="PRECIO"
+                        x:Name="txtPrecio"
+                           HorizontalOptions="FillAndExpand"
+                           Grid.Row="1" Grid.Column="0"
+                           VerticalTextAlignment="Center" />
+
+
+                          <Editor  
+                           FontSize="17"
+                           TextColor="Green"
+                           Margin="10"
+                           Keyboard="Text"
+                           x:Name="txtDescripcion"
+                           Placeholder="DESCRPCION"
+                           HorizontalOptions="FillAndExpand"
+                           Grid.Row="4" Grid.Column="0"
+                            />
+
+                     <Picker
+                         x:Name="cboUnidad"
+                         Grid.Column="0"
+                         Grid.Row="2"
+                         Margin="10"
+                         Title="Unidad de Precio" />
+
+                     <Picker
+                         x:Name="cboTipoProducto"
+                         Margin="10"
+                         Grid.Column="0"
+                         Grid.Row="3"
+                         Title="Tipo de Producto" />
+
+                </Grid>
+          </ScrollView>
+         <Button  Grid.Row="2" Grid.Column="0"
+                       CornerRadius="10"
+                       BackgroundColor="Blue"
+                       TextColor="Black"
+                       x:Name="btncargar"
+                       Margin="10"
+                       FontSize="Title"
+                  Clicked="Button_Clicked"
+                       HorizontalOptions="Fill"
+                       Text="CARGAR" />
+        <ActivityIndicator Grid.Row="2" Grid.Column="0"
+                     x:Name="aicargando"></ActivityIndicator>
+       
+    </Grid>
+    
+
+</ContentPage>

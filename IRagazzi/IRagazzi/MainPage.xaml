@@ -1,0 +1,160 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:custom="clr-namespace:IRagazzi.Clases"
+             xmlns:custom1="clr-namespace:IRagazzi" xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" 
+             xmlns:conv="clr-namespace:ContextMenuSample.Converters"
+             mc:Ignorable="d"
+             x:Class="IRagazzi.MainPage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <conv:MenuFitWidthConverter x:Key="MenuFitWidthConverter" />
+            <OnPlatform x:TypeArguments="x:String" x:Key="BoldFont">
+                <On Platform="Android" Value="Barrets.otf#Open Sans" />
+            </OnPlatform>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <NavigationPage.TitleView>
+        <AbsoluteLayout VerticalOptions="CenterAndExpand">
+            <Button Text="I Ragazzi" TextColor="Black" Clicked="btnLogin" BackgroundColor="Transparent" FontSize="Title"  AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0,0,170,60" />
+            </AbsoluteLayout>
+    </NavigationPage.TitleView>
+
+    <StackLayout>
+
+        <Grid >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="130" />
+                <RowDefinition Height="*" />
+
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+
+            </Grid.ColumnDefinitions>
+
+
+
+            <Grid Grid.Row="0" Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="100" />
+                    <RowDefinition Height="*" />
+
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <ImageButton Margin="20,5,0,0" Source="frutas.jpg" Grid.Row="0" Grid.Column="0" Clicked="btnFrutas"  Aspect="AspectFill" />
+                <ImageButton Margin="20,5,0,0" Source="verduras.jpg" Grid.Row="0" Grid.Column="1" Clicked="btnVerduras"  Aspect="AspectFill" />
+                <ImageButton Margin="20,5,3,0" Source="carnes.jpg" Grid.Row="0" Grid.Column="2"   Clicked="btnCarnes" Aspect="AspectFill"/>
+
+                <Label Text="Frutas" Grid.Row="1" BindingContextChanged="btnFrutas" Grid.Column="0" HorizontalOptions="Center" />
+                <Label Text="Verduras" Grid.Row="1" BindingContextChanged="btnVerduras" Grid.Column="1" HorizontalOptions="Center" />
+                <Label Text="Carnes" Grid.Row="1" BindingContextChanged="btnCarnes" Grid.Column="2"  HorizontalOptions="Center"/>
+
+            </Grid>
+
+            <CollectionView  Grid.Row="1" Grid.Column="0" x:Name="lstUsuario" 
+                            ItemsSource="{Binding Productos}"
+                                SelectionMode="Single"
+                                Margin="10"
+                                SelectionChanged="lstUsuario_SelectionChanged"
+                                >
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout Orientation="Vertical"
+                        Span="2"
+                        VerticalItemSpacing="10"
+                        HorizontalItemSpacing="10" />
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+
+
+
+                        <Frame BackgroundColor="White"
+                                   BorderColor="#4CAF50"
+                                   Margin="10"
+                                   Padding="20"
+                               CornerRadius="10"
+                                 HasShadow="True"
+                                   WidthRequest="{Binding , Path=Width, Converter={StaticResource MenuFitWidthConverter}, ConverterParameter='70'}"
+                                  >
+
+
+                            <StackLayout Orientation="Vertical" 
+                                             HorizontalOptions="FillAndExpand"
+                                                     
+                                             Spacing="10">
+
+                                <Label Text="{Binding Nombre}" 
+                                               FontSize="Title"
+                                                   FontFamily="{StaticResource BoldFont}"
+                                                   FontAttributes="Bold"
+                                                   TextColor="#4CAF50"
+                                              />
+                                
+                                <ffimageloading:CachedImage HorizontalOptions="Center" VerticalOptions="Center"
+			                            WidthRequest="200" HeightRequest="200"
+			                            DownsampleToViewSize="true"
+			                            Source = "{Binding Foto}"
+                                        Grid.Row="0">
+                                </ffimageloading:CachedImage>
+
+                                <Label Text="{Binding DescripcionCorta}" 
+                                                   FontSize="Body" TextColor="Black"
+                                                 HorizontalOptions="FillAndExpand" Grid.Row="0" Grid.Column="1" VerticalTextAlignment="Center" />
+
+
+                                <Label Text="{Binding Precio}" 
+                                                   FontSize="Body" TextColor="#4CAF50"
+                                       FontFamily="{StaticResource BoldFont}"
+                                                 HorizontalOptions="FillAndExpand" Grid.Row="0" Grid.Column="1" VerticalTextAlignment="End" />
+
+
+
+
+
+
+
+                            </StackLayout>
+
+
+                        </Frame>
+
+
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            
+            <Button Image="ic_compra.png" Clicked="Button_Clicked" Grid.Row="1" BackgroundColor="Transparent" AbsoluteLayout.LayoutFlags="PositionProportional" BorderColor="#2b3c3c" BorderWidth="1" FontAttributes="Bold"  BorderRadius="35" TextColor="White" HorizontalOptions="End" WidthRequest="35" HeightRequest="35" Margin="0,0,20,22" VerticalOptions="End"/>
+
+            <Button x:Name="lblCantidadCarrizto"  CornerRadius="50" Grid.Row="1" Text="Add animal" BorderColor="#2b3c3c" BorderWidth="1" FontAttributes="Bold" BackgroundColor="Red" BorderRadius="35" TextColor="White" HorizontalOptions="End" WidthRequest="35" HeightRequest="35" Margin="0,0,40,42" VerticalOptions="End"/>
+            
+
+
+            
+               
+                
+
+               
+                 <!--<Button Image="ic_lista.png"  Clicked="Button_Clicked_1"  AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="1,0,40,50" />-->
+
+            
+
+
+
+
+
+
+
+
+        </Grid>
+    </StackLayout>
+
+</ContentPage>

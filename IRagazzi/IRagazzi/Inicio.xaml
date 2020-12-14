@@ -1,0 +1,499 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TabbedPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    xmlns:custom1="clr-namespace:IRagazzi"
+    xmlns:dg="clr-namespace:Xamarin.Forms.DataGrid;assembly=Xamarin.Forms.DataGrid" 
+    xmlns:cards="clr-namespace:PanCardView;assembly=PanCardView"
+    xmlns:context="clr-namespace:ContextMenu.Views;assembly=ContextMenu" 
+    xmlns:viewModels="clr-namespace:ContextMenuSample.ViewModels"
+    xmlns:conv="clr-namespace:ContextMenuSample.Converters"       
+    x:Class="IRagazzi.Inicio"
+    Title="ADMINISTRACION">
+    
+    <TabbedPage.Children>
+        <ContentPage Title="ACTIVOS"    HeightRequest="100" WidthRequest="100">
+            <ContentPage.Resources>
+                <ResourceDictionary>
+                    <OnPlatform x:TypeArguments="x:String" x:Key="BoldFont">
+                        <On Platform="Android" Value="Barrets.otf#Open Sans" />
+                       
+                        
+                    </OnPlatform>
+                    
+                </ResourceDictionary>
+            </ContentPage.Resources>
+          <StackLayout Margin="10">
+                <StackLayout Orientation="Horizontal" >
+
+                    <Button Text="NUEVO" BackgroundColor="DodgerBlue" Clicked="Button_Clicked_1"  HorizontalOptions="FillAndExpand" />
+                    <Button Text="INactivo" x:Name="btnInactivo" Clicked="Button_Clicked_3"  BackgroundColor="Red" HorizontalOptions="FillAndExpand" />
+                    <Button Text="ACTIVOS" x:Name="btnActivo" IsVisible="False" BackgroundColor="DodgerBlue" Clicked="Button_Clicked_4"  HorizontalOptions="FillAndExpand" />
+                </StackLayout>
+
+
+                <CollectionView x:Name="lstActivo" ItemsSource="{Binding Productos}"
+                                SelectionMode="Single"
+                                
+                                SelectionChanged="lstActivo_SelectionChanged"
+                                >
+                    <CollectionView.ItemsLayout>
+                        <GridItemsLayout Orientation="Vertical"
+                        Span="2"
+                        VerticalItemSpacing="10"
+                        HorizontalItemSpacing="10" />
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+
+
+
+                            <Frame BackgroundColor="White"
+                                   BorderColor="#4CAF50"
+                                   Margin="10"
+                                   Padding="20"
+                                   WidthRequest="{Binding , Path=Width, Converter={StaticResource MenuFitWidthConverter}, ConverterParameter='70'}"
+                                  >
+
+
+                                        <StackLayout Orientation="Vertical" 
+                                             HorizontalOptions="FillAndExpand"
+                                                     
+                                             Spacing="10">
+
+                                            <Label Text="{Binding Nombre}" 
+                                               FontSize="Title"
+                                                   FontFamily="{StaticResource BoldFont}"
+                                                   FontAttributes="Bold"
+                                                   TextColor="#4CAF50"
+                                              />
+                                            <ffimageloading:CachedImage HorizontalOptions="Center" VerticalOptions="Center"
+			                            WidthRequest="200" HeightRequest="200"
+			                            DownsampleToViewSize="true"
+			                            Source = "{Binding Foto}"
+                                        Grid.Row="0">
+                                            </ffimageloading:CachedImage>
+
+                                    <Label Text="{Binding Id_categoria}" 
+                                                   FontSize="Title" TextColor="Black"
+                                           FontAttributes="Bold"
+                                                 HorizontalOptions="FillAndExpand" Grid.Row="0" Grid.Column="1" VerticalTextAlignment="Start" />
+
+
+                                    <Label Text="{Binding Precio}" 
+                                                   FontSize="Body" TextColor="#4CAF50"
+                                                 HorizontalOptions="FillAndExpand" Grid.Row="0" Grid.Column="1" VerticalTextAlignment="End" />
+
+
+
+                                    
+                                    
+                        
+                                    
+                                </StackLayout>
+                                
+
+                                    </Frame>
+
+
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+
+
+
+                <CollectionView x:Name="lstInactivos" ItemsSource="{Binding Productos}"
+                                SelectionMode="Single"
+                                IsVisible="False"
+                                SelectionChanged="lstInactivos_SelectionChanged"
+                                >
+                    <CollectionView.ItemsLayout>
+                        <GridItemsLayout Orientation="Vertical"
+                        Span="2"
+                        VerticalItemSpacing="10"
+                        HorizontalItemSpacing="10" />
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+
+
+
+                            <Frame BackgroundColor="White"
+                                   BorderColor="#4CAF50"
+                                   Margin="10"
+                                   Padding="20"
+                                   WidthRequest="{Binding , Path=Width, Converter={StaticResource MenuFitWidthConverter}, ConverterParameter='70'}"
+                                  >
+
+
+                                <StackLayout Orientation="Vertical" 
+                                             HorizontalOptions="FillAndExpand"
+                                                     
+                                             Spacing="10">
+
+                                    <Label Text="{Binding Nombre}" 
+                                               FontSize="Title"
+                                                   FontFamily="{StaticResource BoldFont}"
+                                                   FontAttributes="Bold"
+                                                   TextColor="#4CAF50"
+                                              />
+                                    <ffimageloading:CachedImage HorizontalOptions="Center" VerticalOptions="Center"
+			                            WidthRequest="200" HeightRequest="200"
+			                            DownsampleToViewSize="true"
+			                            Source = "{Binding Foto}"
+                                        Grid.Row="0">
+                                    </ffimageloading:CachedImage>
+
+                                    <Label Text="{Binding Id_categoria}" 
+                                                   FontSize="Title" TextColor="Black"
+                                           FontAttributes="Bold"
+                                                 HorizontalOptions="FillAndExpand" Grid.Row="0" Grid.Column="1" VerticalTextAlignment="Start" />
+
+
+                                    <Label Text="{Binding Precio}" 
+                                                   FontSize="Body" TextColor="#4CAF50"
+                                                 HorizontalOptions="FillAndExpand" Grid.Row="0" Grid.Column="1" VerticalTextAlignment="End" />
+
+
+
+
+
+
+
+                                </StackLayout>
+
+
+                            </Frame>
+
+
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+
+                
+           </StackLayout>
+        </ContentPage>
+
+        
+        <ContentPage Title="INFLUENCER">
+            <StackLayout Margin="10">
+                <StackLayout Orientation="Horizontal" >
+                    <Button Text="NUEVO" Clicked="Button_Clicked" BackgroundColor="DodgerBlue" HorizontalOptions="FillAndExpand" />
+                    <Button Text="REPORTE" Clicked="Button_Clicked_2" BackgroundColor="#FFB833" HorizontalOptions="FillAndExpand" />
+                </StackLayout>
+                <dg:DataGrid x:Name="lstinfluencer" ItemsSource="{Binding influencer}"     SelectionEnabled="True"  RowHeight="70" HeaderHeight="50"
+                    BorderColor="White" HeaderBackground="MediumAquamarine"  ActiveRowColor="Red">
+                    <x:Arguments>
+                        <ListViewCachingStrategy>RetainElement</ListViewCachingStrategy>
+                    </x:Arguments>
+                    <dg:DataGrid.HeaderFontSize>
+                        <OnIdiom x:TypeArguments="x:Double">
+                            <OnIdiom.Tablet>15</OnIdiom.Tablet>
+                            <OnIdiom.Phone>12</OnIdiom.Phone>
+                        </OnIdiom>
+                    </dg:DataGrid.HeaderFontSize>
+                    <dg:DataGrid.Columns>
+                        <dg:DataGridColumn Title="Codigo" PropertyName="Codigo" Width="1*"></dg:DataGridColumn>
+                        <dg:DataGridColumn Title="Nombre" PropertyName="Nombre" Width="1*"></dg:DataGridColumn>
+                        <dg:DataGridColumn Title="Descuento" PropertyName="Descuento" Width="1*"></dg:DataGridColumn>
+
+                    </dg:DataGrid.Columns>
+                    <dg:DataGrid.RowsBackgroundColorPalette>
+                        <dg:PaletteCollection>
+
+                        </dg:PaletteCollection>
+                    </dg:DataGrid.RowsBackgroundColorPalette>
+                </dg:DataGrid>
+
+
+
+
+
+            </StackLayout>
+        </ContentPage>
+
+
+        <ContentPage Title="Nuevos">
+
+            <ContentPage.Resources>
+                <ResourceDictionary>
+                    <conv:MenuFitWidthConverter x:Key="MenuFitWidthConverter" />
+                    <OnPlatform x:TypeArguments="x:String" x:Key="BoldFont">
+                        <On Platform="Android" Value="Barrets.otf#Open Sans" />
+                    </OnPlatform>
+                </ResourceDictionary>
+            </ContentPage.Resources>
+
+
+            <ContentPage.BindingContext>
+                <viewModels:BaseItemsViewModel />
+            </ContentPage.BindingContext>
+
+            <CollectionView x:Name="CollectionView"
+                    ItemsSource="{Binding Items}"
+                    Margin="0, 5, 0, 0"
+                    BackgroundColor="White">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate >
+                        <context:SwipeActionContextHolder MovedCommand="{Binding BindingContext.DeleteCommand, Source={x:Reference CollectionView}}">
+                            <context:SwipeActionContextMenuView ForceCloseCommand="{Binding ForceCloseCommand}">
+
+                                <context:SwipeActionContextMenuView.View  >
+
+                                    <Frame BackgroundColor="#4CAF50"
+                                   Margin="15,5"
+                                   Padding="20"
+                                   WidthRequest="{Binding Source={x:Reference CollectionView}, Path=Width, Converter={StaticResource MenuFitWidthConverter}, ConverterParameter='70'}"
+                                   CornerRadius="10">
+                                        <StackLayout Orientation="Vertical" 
+                                             HorizontalOptions="FillAndExpand"
+                                             Spacing="10">
+
+                                            <StackLayout VerticalOptions="Start"
+                                                 HorizontalOptions="Start"
+                                                 Spacing="0">
+                                                <Label Text="Dirreccion"
+                                                   FontFamily="{StaticResource BoldFont}"
+                                               FontAttributes="Bold"
+                                               TextColor="White"/>
+                                                <Label Text="{Binding Direccion}" 
+                                                   FontFamily="{StaticResource BoldFont}"
+                                               FontSize="Large"
+                                               TextColor="White"/>
+                                            </StackLayout>
+                                            <StackLayout VerticalOptions="Start"
+                                                 HorizontalOptions="Start"
+                                                 Spacing="0">
+                                                <Label Text="Pedido"
+                                                   FontFamily="{StaticResource BoldFont}"
+                                               FontAttributes="Bold"
+                                               TextColor="White"/>
+                                                <Label Text="{Binding Productos}" 
+                                                   FontFamily="{StaticResource BoldFont}"
+                                               FontSize="Large"
+                                               TextColor="White"/>
+                                            </StackLayout>
+                                            <StackLayout VerticalOptions="Start"
+                                                 HorizontalOptions="Start"
+                                                 Spacing="0">
+                                                <Label Text="Precio del Pedido"
+                                                   FontFamily="{StaticResource BoldFont}"
+                                               FontAttributes="Bold"
+                                               TextColor="White"/>
+                                                <Label Text="{Binding PrecioTotal}" 
+                                               FontSize="Large"
+                                               TextColor="White"/>
+                                            </StackLayout>
+                                            <StackLayout VerticalOptions="Start"
+                                                 HorizontalOptions="Start"
+                                                 Spacing="0">
+                                                <Label Text="Forma de Pago"
+                                               FontAttributes="Bold"
+                                                   FontFamily="{StaticResource BoldFont}"
+                                               TextColor="White"/>
+                                                <Label Text="{Binding Pago}" 
+                                                   FontFamily="{StaticResource BoldFont}"
+                                               FontSize="Large"
+                                               TextColor="White"/>
+                                            </StackLayout>
+                                            <StackLayout VerticalOptions="Start"
+                                                 HorizontalOptions="Start"
+                                                 Spacing="0">
+                                                <Label Text="Fecha del Pedido"
+                                                   FontFamily="{StaticResource BoldFont}"
+                                               FontAttributes="Bold"
+                                               TextColor="White"/>
+                                                <Label Text="{Binding FechaString}" 
+                                                   FontFamily="{StaticResource BoldFont}"
+                                               FontSize="Large"
+                                               TextColor="White"/>
+                                            </StackLayout>
+                                            <StackLayout VerticalOptions="Start"
+                                                 HorizontalOptions="Start"
+                                                 Spacing="0">
+                                                <Label Text="Telefono"
+                                                   FontFamily="{StaticResource BoldFont}"
+                                               FontAttributes="Bold"
+                                               TextColor="White"/>
+                                                <Label Text="{Binding Telefono}" 
+                                                   FontFamily="{StaticResource BoldFont}"
+                                               FontSize="Large"
+                                               TextColor="White"/>
+                                            </StackLayout>
+                                        </StackLayout>
+                                    </Frame>
+                                </context:SwipeActionContextMenuView.View>
+                                <context:SwipeActionContextMenuView.ContextTemplate>
+                                    <DataTemplate>
+                                        <Frame Margin="15, 5"
+                                       IsClippedToBounds="true"
+                                       CornerRadius="10"
+                                       BackgroundColor="Red">
+                                            <StackLayout 
+                                             Padding="10, 0"
+                                             Margin="0, 5">
+                                                <Label Text="ENTREGADO"
+                                           TextColor="White"
+                                           FontAttributes="Bold"
+                                           VerticalOptions="CenterAndExpand"
+                                           HorizontalOptions="EndAndExpand"/>
+                                            </StackLayout>
+                                        </Frame>
+                                    </DataTemplate>
+                                </context:SwipeActionContextMenuView.ContextTemplate>
+                            </context:SwipeActionContextMenuView>
+                        </context:SwipeActionContextHolder>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+
+        </ContentPage>
+
+        <ContentPage Title="TODOS">
+
+            <ContentPage.Resources>
+                <ResourceDictionary>
+                    <conv:MenuFitWidthConverter x:Key="MenuFitWidthConverter" />
+                    <OnPlatform x:TypeArguments="x:String" x:Key="BoldFont">
+                        <On Platform="Android" Value="Barrets.otf#Open Sans" />
+                    </OnPlatform>
+                </ResourceDictionary>
+            </ContentPage.Resources>
+
+            <ContentPage.BindingContext>
+                <viewModels:BaseItemsViewModel />
+            </ContentPage.BindingContext>
+
+
+            <CollectionView x:Name="CollectionView1"
+                    ItemsSource="{Binding Items}"
+                   
+                    Margin="0, 5, 0, 0"
+                    BackgroundColor="White">
+
+                <CollectionView.ItemTemplate>
+
+                    <DataTemplate >
+                        <context:SwipeActionContextHolder MovedCommand="{Binding BindingContext.DetalleTodos, Source={x:Reference CollectionView}}">
+                            <context:SwipeActionContextMenuView ForceCloseCommand="{Binding ForceCloseCommand}">
+
+                                <context:SwipeActionContextMenuView.View  >
+
+                                    <Frame BackgroundColor="#4CAF50"
+                                   Margin="15,5"
+                                   Padding="20"
+                                   WidthRequest="{Binding Source={x:Reference CollectionView}, Path=Width, Converter={StaticResource MenuFitWidthConverter}, ConverterParameter='70'}"
+                                   CornerRadius="10">
+                                        <StackLayout Orientation="Vertical" 
+                                             HorizontalOptions="FillAndExpand"
+                                             Spacing="10">
+
+                                            <StackLayout VerticalOptions="Start"
+                                                 HorizontalOptions="Start"
+                                                 Spacing="0">
+                                                <Label Text="Dirreccion"
+                                                   FontFamily="{StaticResource BoldFont}"
+                                               FontAttributes="Bold"
+                                               TextColor="White"/>
+                                                <Label Text="{Binding Direccion}" 
+                                                   FontFamily="{StaticResource BoldFont}"
+                                               FontSize="Large"
+                                               TextColor="White"/>
+                                            </StackLayout>
+                                            <StackLayout VerticalOptions="Start"
+                                                 HorizontalOptions="Start"
+                                                 Spacing="0">
+                                                <Label Text="Pedido"
+                                                   FontFamily="{StaticResource BoldFont}"
+                                               FontAttributes="Bold"
+                                               TextColor="White"/>
+                                                <Label Text="{Binding Productos}" 
+                                                   FontFamily="{StaticResource BoldFont}"
+                                               FontSize="Large"
+                                               TextColor="White"/>
+                                            </StackLayout>
+                                            <StackLayout VerticalOptions="Start"
+                                                 HorizontalOptions="Start"
+                                                 Spacing="0">
+                                                <Label Text="Precio del Pedido"
+                                                   FontFamily="{StaticResource BoldFont}"
+                                               FontAttributes="Bold"
+                                               TextColor="White"/>
+                                                <Label Text="{Binding PrecioTotal}" 
+                                               FontSize="Large"
+                                               TextColor="White"/>
+                                            </StackLayout>
+                                            <StackLayout VerticalOptions="Start"
+                                                 HorizontalOptions="Start"
+                                                 Spacing="0">
+                                                <Label Text="Forma de Pago"
+                                               FontAttributes="Bold"
+                                                   FontFamily="{StaticResource BoldFont}"
+                                               TextColor="White"/>
+                                                <Label Text="{Binding Pago}" 
+                                                   FontFamily="{StaticResource BoldFont}"
+                                               FontSize="Large"
+                                               TextColor="White"/>
+                                            </StackLayout>
+                                            <StackLayout VerticalOptions="Start"
+                                                 HorizontalOptions="Start"
+                                                 Spacing="0">
+                                                <Label Text="Fecha del Pedido"
+                                                   FontFamily="{StaticResource BoldFont}"
+                                               FontAttributes="Bold"
+                                               TextColor="White"/>
+                                                <Label Text="{Binding FechaString}" 
+                                                   FontFamily="{StaticResource BoldFont}"
+                                               FontSize="Large"
+                                               TextColor="White"/>
+                                            </StackLayout>
+                                            <StackLayout VerticalOptions="Start"
+                                                 HorizontalOptions="Start"
+                                                 Spacing="0">
+                                                <Label Text="Telefono"
+                                                   FontFamily="{StaticResource BoldFont}"
+                                               FontAttributes="Bold"
+                                               TextColor="White"/>
+                                                <Label Text="{Binding Telefono}" 
+                                                   FontFamily="{StaticResource BoldFont}"
+                                               FontSize="Large"
+                                               TextColor="White"/>
+                                            </StackLayout>
+                                        </StackLayout>
+                                    </Frame>
+                                </context:SwipeActionContextMenuView.View>
+                                <context:SwipeActionContextMenuView.ContextTemplate>
+                                    <DataTemplate>
+                                        <Frame Margin="15, 5"
+                                       IsClippedToBounds="true"
+                                       CornerRadius="10"
+                                       BackgroundColor="Black">
+                                            <StackLayout 
+                                             Padding="10, 0"
+                                             Margin="0, 5">
+                                                <Label Text="Detalle"
+                                           TextColor="White"
+                                                FontFamily="{StaticResource BoldFont}"
+                                           FontSize="Title"
+                                           VerticalOptions="CenterAndExpand"
+                                           HorizontalOptions="EndAndExpand"/>
+                                            </StackLayout>
+                                        </Frame>
+                                    </DataTemplate>
+                                </context:SwipeActionContextMenuView.ContextTemplate>
+                            </context:SwipeActionContextMenuView>
+                        </context:SwipeActionContextHolder>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+
+        </ContentPage>
+
+
+
+    </TabbedPage.Children>
+    
+</TabbedPage>

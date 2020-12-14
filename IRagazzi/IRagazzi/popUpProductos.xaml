@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<pages:PopupPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="IRagazzi.popUpProductos"
+              xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"
+             xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup" xmlns:conv="clr-namespace:ContextMenuSample.Converters">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <conv:MenuFitWidthConverter x:Key="MenuFitWidthConverter" />
+            <OnPlatform x:TypeArguments="x:String" x:Key="BoldFont">
+                <On Platform="Android" Value="Barrets.otf#Open Sans" />
+            </OnPlatform>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <pages:PopupPage.Animation>
+        <animations:ScaleAnimation DurationIn="400"
+                                   DurationOut="300"
+                                   EasingIn="SinOut"
+                                   EasingOut="SinIn"
+                                   HasBackgroundAnimation="True"
+                                   PositionIn="Center"
+                                   PositionOut="Center"
+                                   ScaleIn="5"
+                                   ScaleOut="5" />
+    </pages:PopupPage.Animation>
+
+    <!--  You can use any elements here which are extended from Xamarin.Forms.View  -->
+    <StackLayout Margin="5"
+                 Padding="5"
+                 BackgroundColor="White"
+                 HorizontalOptions="Center"
+                 VerticalOptions="Center"
+                >
+        <StackLayout>
+            <Image x:Name="foto" HeightRequest="150" WidthRequest="150"  />
+        </StackLayout>
+        <StackLayout>
+            <Label  x:Name="nombre"  FontFamily="{StaticResource BoldFont}" FontSize="Title" TextColor="Black" VerticalOptions="Center"/>
+        </StackLayout>
+        <StackLayout>
+            <Label  FontFamily="{StaticResource BoldFont}" x:Name="lblDescripcion" ></Label>
+        </StackLayout>
+        
+        <StackLayout>
+            <Label  x:Name="precio"  FontFamily="{StaticResource BoldFont}" FontSize="Title" TextColor="Black" VerticalOptions="Center" />
+        </StackLayout>
+        <StackLayout Orientation="Horizontal"  HeightRequest="35">
+            <Label Text="Cantidad"  FontFamily="{StaticResource BoldFont}" FontSize="Title" TextColor="Black" VerticalOptions="Center"/>
+            <ImageButton Source="menos.png"   Clicked="btnMenos" />
+            
+            <Label x:Name="lblCantidad" Text="0" FontSize="Title" TextColor="Black" VerticalOptions="Center" />
+
+            <ImageButton Source="mas.png" Clicked="btnMas" />
+        </StackLayout>
+        <StackLayout Orientation="Horizontal"  HeightRequest="35" HorizontalOptions="Start">
+            <Label Text="Pricio Total"  FontFamily="{StaticResource BoldFont}" FontSize="Title" TextColor="Black" VerticalOptions="Center"/>
+            
+
+            <Label x:Name="lblSuma" Text="0" FontSize="Title" TextColor="Black" VerticalOptions="Center" />
+
+        </StackLayout>
+
+        <Button BackgroundColor="DodgerBlue"
+                FontSize="30"
+                Text="Confirmar"
+                TextColor="White" 
+                Clicked="btnConfirmar"/>
+        <Button BackgroundColor="Red"
+                FontSize="30"
+                x:Name="btnEliminar"
+                Text="Elimar Producto"
+                TextColor="White" 
+                Clicked="btnEliminar_Clicked"/>
+    </StackLayout>
+
+</pages:PopupPage>
